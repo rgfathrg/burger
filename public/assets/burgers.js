@@ -1,18 +1,24 @@
 $(function() {
-    $(".change-devour").on("click", function(event) {
+    $(".devour").on("click", function(event) {
+        event.preventDefault();
+        console.log("success");
+        
         var id = $(this).data("id");
+        console.log(id);
         var devoured = $(this).data("devoured");
-
-        var devouredState = {
+        devoured = 1;
+        var newDev = {
             devour: devoured
         };
+        console.log(devoured);
 
         $.ajax("/api/burgers/" + id, {
             type: "PUT",
-            data: devouredState
+            data: newDev
         }).then(
             function() {
                 console.log("Burger has been devoured!");
+                location.reload();
             }
         );
     });

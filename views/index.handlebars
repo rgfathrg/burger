@@ -4,8 +4,10 @@
 
 <ul>
     {{#each burgers}}
-      {{#unless devour}}
-        {{partial/burger-block devour=false}}
+      {{#unless devoured}}
+        <li>
+            <p>Burger: {{this.burger_name}}</p><button data-id="{{this.id}}" data-devoured="{{this.devoured}}" class="devour">Devour Burger!</button>
+        </li>
       {{/unless}}
     {{/each}}
 </ul>
@@ -14,8 +16,10 @@
 
 <ul>
     {{#each burgers}}
-      {{#if devour}}
-        {{partial/burger-block devour=true}}
+      {{#if devoured}}
+        <li>
+            <p>Burger: {{this.burger_name}}</p>
+        </li>
       {{/if}}
     {{/each}}  
 </ul>
